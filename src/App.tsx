@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Suspense } from 'react'
+import RouterComponent from './routes/route'
+import NavBar from './components/navbar/navbar.component'
+import FooterComponent from './components/footer/footer.component'
+import {
+  CircularProgress,
+  Backdrop,
+} from './helpers/imports/material-ui.imports'
 
-function App() {
+const SimpleBackdrop = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={true}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
-  );
+  )
 }
 
-export default App;
+const App = (): JSX.Element => {
+  return (
+    <Suspense fallback={<SimpleBackdrop />}>
+      <NavBar />
+      <RouterComponent />
+      <FooterComponent />
+    </Suspense>
+  )
+}
+
+export default App
