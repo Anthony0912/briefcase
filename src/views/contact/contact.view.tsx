@@ -35,14 +35,16 @@ const ContactView = (): JSX.Element => {
         subject: `Mensaje enviado por ${form.name}, por el correo electrónico ${form.email} desde el formulario de contacto en el portafolio.`,
         text: form.message,
       }
-      const response: any = await sendEmail(data)
-      if (response[0]?.statusCode === 202) {
-        toast.success('El correo electrónico fue enviado con éxito.')
-        const formId: any = document.getElementById('form')
-        formId.reset()
-        setIsLoadBtn(false)
-      } else {
-        toast.dark(response)
+      try {
+        const response: any = await sendEmail(data)
+        if (response[0]?.statusCode === 202) {
+          toast.success('El correo electrónico fue enviado con éxito.')
+          const formId: any = document.getElementById('form')
+          formId.reset()
+          setIsLoadBtn(false)
+        }
+      } catch (error:any) {
+        toast.error("El correo electrónico no pudo ser enviado, por favor intentalo más tarde.")
         setIsLoadBtn(false)
       }
     } else {

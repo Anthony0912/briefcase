@@ -7,7 +7,7 @@ import ContactView from '../contact/contact.view'
 import SkillsView from '../skills/skills.view'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
-import Lottie from 'react-lottie'
+import Lottie from 'lottie-react'
 import particlesAmongus from '../../assets/particles/particles-amongus.json'
 import particlesCircle from '../../assets/particles/particles-circle.json'
 import particlesSimple from '../../assets/particles/particles-simple.json'
@@ -18,7 +18,7 @@ const Home = forwardRef((props: any, ref: any) => {
   const local: any = sessionStorage.getItem('particle')
   const [particle, setParticle] = useState<number>(0)
   const [optionParticle, setOptionParticle] = useState<any>({})
-  const defaultOptions:any = {
+  const defaultOptions: any = {
     loop: true,
     autoplay: true,
     animationData: developerAnimation,
@@ -116,11 +116,7 @@ const Home = forwardRef((props: any, ref: any) => {
           </div>
 
           <div className="home__img">
-            <Lottie
-              options={defaultOptions}
-              isStopped={false}
-              isPaused={false}
-            />
+            <Lottie {...defaultOptions}  />
           </div>
         </div>
       </ScrollRevealComponent>
