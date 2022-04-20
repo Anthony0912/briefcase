@@ -9,9 +9,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 const ContactView = (): JSX.Element => {
   const [isLoadBtn, setIsLoadBtn] = useState<boolean>(false)
-  const regExpEmail: RegExp = RegExp(
-    /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-  )
+  const regExpEmail: RegExp = RegExp(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
   const [form, setForm] = useState<FormSendEmailInterface>({
     name: '',
     email: '',
@@ -42,9 +40,10 @@ const ContactView = (): JSX.Element => {
           const formId: any = document.getElementById('form')
           formId.reset()
           setIsLoadBtn(false)
+          setErrors({ name: '', email: '', message: '' })
         }
-      } catch (error:any) {
-        toast.error("El correo electrónico no pudo ser enviado, por favor intentalo más tarde.")
+      } catch (error) {
+        toast.error('El correo electrónico no pudo ser enviado, por favor intentalo más tarde.')
         setIsLoadBtn(false)
       }
     } else {
@@ -64,9 +63,7 @@ const ContactView = (): JSX.Element => {
     return false
   }
 
-  const handleOnChange = (prop: keyof FormSendEmailInterface) => (
-    event: any,
-  ): void => {
+  const handleOnChange = (prop: keyof FormSendEmailInterface) => (event: any): void => {
     setForm({ ...form, [prop]: event.target.value.trim() as string })
   }
 
@@ -142,7 +139,6 @@ const ContactView = (): JSX.Element => {
           </LoadingButton>
         </form>
       </div>
-     
     </div>
   )
 }
