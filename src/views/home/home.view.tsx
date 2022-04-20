@@ -7,15 +7,25 @@ import ContactView from '../contact/contact.view'
 import SkillsView from '../skills/skills.view'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
+import Lottie from 'react-lottie'
 import particlesAmongus from '../../assets/particles/particles-amongus.json'
 import particlesCircle from '../../assets/particles/particles-circle.json'
 import particlesSimple from '../../assets/particles/particles-simple.json'
 import particlesLinesEfect from '../../assets/particles/particles-lines-efects.json'
+import developerAnimation from '../../assets/lottie-files/developer-animation.json'
 
 const Home = forwardRef((props: any, ref: any) => {
   const local: any = sessionStorage.getItem('particle')
   const [particle, setParticle] = useState<number>(0)
   const [optionParticle, setOptionParticle] = useState<any>({})
+  const defaultOptions:any = {
+    loop: true,
+    autoplay: true,
+    animationData: developerAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  }
 
   useEffect(() => {
     if (!local) {
@@ -46,15 +56,7 @@ const Home = forwardRef((props: any, ref: any) => {
             <Particles options={optionParticle} init={particlesInit} />
           </div>
           <div className="home__data">
-            <h1
-              className="home__title"
-              style={{
-                color:
-                  particle === 0 || particle === 1 || particle === 3
-                    ? '#fff'
-                    : '',
-              }}
-            >
+            <h1 className="home__title" style={{ color: '#fff' }}>
               Hi, <br />
               I`am <span className="home__title-color">Anthony</span>
               <br />
@@ -73,12 +75,7 @@ const Home = forwardRef((props: any, ref: any) => {
             >
               <i
                 className="bx bxl-linkedin-square"
-                style={{
-                  color:
-                    particle === 0 || particle === 1 || particle === 3
-                      ? '#fff'
-                      : '',
-                }}
+                style={{ color: '#fff' }}
               ></i>
             </a>
             <a
@@ -87,15 +84,7 @@ const Home = forwardRef((props: any, ref: any) => {
               target="_blank"
               rel="noreferrer"
             >
-              <i
-                className="bx bxl-gitlab"
-                style={{
-                  color:
-                    particle === 0 || particle === 1 || particle === 3
-                      ? '#fff'
-                      : '',
-                }}
-              ></i>
+              <i className="bx bxl-gitlab" style={{ color: '#fff' }}></i>
             </a>
             <a
               href="https://github.com/Anthony0912"
@@ -103,15 +92,7 @@ const Home = forwardRef((props: any, ref: any) => {
               target="_blank"
               rel="noreferrer"
             >
-              <i
-                className="bx bxl-github"
-                style={{
-                  color:
-                    particle === 0 || particle === 1 || particle === 3
-                      ? '#fff'
-                      : '',
-                }}
-              ></i>
+              <i className="bx bxl-github" style={{ color: '#fff' }}></i>
             </a>
             <a
               href="https://www.facebook.com/anthony.cardona.501598"
@@ -121,12 +102,7 @@ const Home = forwardRef((props: any, ref: any) => {
             >
               <i
                 className="bx bxl-facebook-circle"
-                style={{
-                  color:
-                    particle === 0 || particle === 1 || particle === 3
-                      ? '#fff'
-                      : '',
-                }}
+                style={{ color: '#fff' }}
               ></i>
             </a>
             <a
@@ -135,27 +111,16 @@ const Home = forwardRef((props: any, ref: any) => {
               target="_blank"
               rel="noreferrer"
             >
-              <i
-                className="bx bxl-twitter"
-                style={{
-                  color:
-                    particle === 0 || particle === 1 || particle === 3
-                      ? '#fff'
-                      : '',
-                }}
-              ></i>
+              <i className="bx bxl-twitter" style={{ color: '#fff' }}></i>
             </a>
           </div>
 
           <div className="home__img">
-            {/* <lottie-player
-                src="https://assets9.lottiefiles.com/private_files/lf30_wqypnpu5.json"
-                background="transparent"
-                speed="1"
-                loop
-                autoplay
-                className="lottie-player"
-              ></lottie-player> */}
+            <Lottie
+              options={defaultOptions}
+              isStopped={false}
+              isPaused={false}
+            />
           </div>
         </div>
       </ScrollRevealComponent>

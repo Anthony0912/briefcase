@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
+import Logo from '../../assets/img/logo.png'
 
 const NavBar = (): JSX.Element => {
   const location = useLocation()
@@ -39,7 +40,9 @@ const NavBar = (): JSX.Element => {
     <header className="l-header">
       <nav className="nav bd-grid">
         <div>
-          <div className="nav__logo">Anthony K. Cardona Mairena</div>
+          <div className="nav__logo">
+            <img src={Logo} alt="Logo" className="nav__logo__img"/>
+          </div>
         </div>
         <div className="nav__menu" id="nav-menu">
           <ul className="nav__list">

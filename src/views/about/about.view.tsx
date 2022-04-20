@@ -10,13 +10,13 @@ const AboutView = (): JSX.Element => {
         <div>
           <h2 className="about__subtitle">I`am Anthony</h2>
           <p className="about__text">
-            My name is Anthony and I am a Software Engineer, I like it develop
-            web applications on the fronted and backend side. Also, I have
-            previous knowledge in the development of desktop and mobile
-            applications with C #, flutter, xamarin and java using
-            object-oriented programming, MVC (Model-View-Controller), REST API,
-            Microservices, UML (Unified Model Language), GIT version manager,
-            Unit testing and automated tests.
+            My name is Anthony and I am a software engineer, I like to develop
+            web applications for Front-End and Back-End. Likewise, I have
+            previous, practical knowledge and experience with the development of
+            applications using Angular JS, React JS, Laravel, Express JS,
+            MongoDB and MySQL. I am currently working remotely in Costa Rica and
+            I am always available to discuss his project by sending a message
+            through one of my social media channels.
           </p>
         </div>
       </div>

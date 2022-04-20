@@ -4,6 +4,7 @@ import { HashRouter } from 'react-router-dom'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import './assets/css/styles.css';
+import './assets/css/izmir.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(

@@ -1,6 +1,13 @@
+import Logo from '../../assets/img/logo.png'
+
 const FooterComponent = (): JSX.Element => {
   return (
     <footer className="footer">
+      <div className="content__logo__footer">
+        <div>
+          <img src={Logo} width={110} alt="Logo" />
+        </div>
+      </div>
       <p className="footer__title"></p>
       <div className="footer__social">
         <a
@@ -12,7 +19,7 @@ const FooterComponent = (): JSX.Element => {
           <i className="bx bxl-linkedin-square"></i>
         </a>
         <a
-          href="https://gitlab.com/anthony0912" 
+          href="https://gitlab.com/anthony0912"
           className="footer__icon"
           target="_blank"
           rel="noreferrer"
@@ -49,4 +56,4 @@ const FooterComponent = (): JSX.Element => {
   )
 }
 
-export default FooterComponent;
+export default FooterComponent

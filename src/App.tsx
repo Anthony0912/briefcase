@@ -6,6 +6,7 @@ import {
   CircularProgress,
   Backdrop,
 } from './helpers/imports/material-ui.imports'
+import { ToastContainer } from 'react-toastify'
 
 const SimpleBackdrop = (): JSX.Element => {
   return (
@@ -24,6 +25,18 @@ const App = (): JSX.Element => {
   return (
     <Suspense fallback={<SimpleBackdrop />}>
       <NavBar />
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <RouterComponent />
       <FooterComponent />
     </Suspense>
