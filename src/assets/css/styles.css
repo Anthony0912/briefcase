@@ -1,3 +1,17 @@
+*::-webkit-scrollbar {
+  width: 7px;
+  height: 7px; 
+}
+*::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--background-color-scrollbar);
+  border-radius: 20px;
+  border: 1px solid var(--border-color-scrollbar);
+}
+
 :root {
   --header-height: 3rem;
   --font-semi: 600;
@@ -11,6 +25,8 @@
   --third-color: #fff;
   --fourth-color: #000;
   --fifth-color: #1c1c1c;
+  --background-color-scrollbar: #797979;
+  --border-color-scrollbar: #797979;
 }
 
 /*===== Fuente y tipografia =====*/
@@ -20,6 +36,7 @@
   --h2-font-size: 1.25rem;
   --normal-font-size: 0.938rem;
 }
+
 @media screen and (min-width: 768px) {
   :root {
     --big-font-size: 3.5rem;
@@ -45,7 +62,7 @@
 }
 
 /* BASE */
-*,
+
 ::before,
 ::after {
   box-sizing: border-box;
@@ -131,7 +148,7 @@ img {
   left: 0;
   z-index: var(--z-fixed);
   background-color: var(--body-color);
-  box-shadow: 0 1px 4px rgba( 0, 255, 0);
+  box-shadow: 0 1px 4px rgba(255, 252, 252, 0.198);
 }
 
 .name-icon {
