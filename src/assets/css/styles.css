@@ -417,6 +417,7 @@ img {
 /* CONTACT */
 .contact__input {
   width: 100%;
+  max-width: 325px;
   font-size: var(--normal-font-size);
   font-weight: var(--font-semi);
   padding: 1rem;
@@ -599,6 +600,15 @@ img {
 
   .about__text {
     max-width: 100%;
+  }
+  .contact__form {
+    width: 300px;
+  }
+  .contact__input {
+    max-width: 270px;
+  }
+  .contact__container {
+    justify-items: center;
   }
 }
 
