@@ -5,8 +5,8 @@ export default class Service {
   public config: any
 
   constructor() {
-    this.api = environment.APP_ENVIROMENT === 'development' ?
-    environment.DEV_URL_API : environment.APP_ENVIROMENT === 'production' ? 
+    this.api = environment.APP_ENVIRONMENT === 'development' ?
+    environment.DEV_URL_API : environment.APP_ENVIRONMENT === 'production' ? 
     environment.PROD_URL_API : environment.TEST_URL_API;
     this.config = {
       headers: {

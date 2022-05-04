@@ -1,7 +1,7 @@
 //APP_ENVIROMENT
 // development, test, production
 export const environment = {
-    APP_ENVIROMENT: "development",
+    APP_ENVIRONMENT: "production",
 
     //## PRODUCTION
     PROD_URL_API: "https://brefcase-api.herokuapp.com/api",
