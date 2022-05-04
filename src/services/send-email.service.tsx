@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Service from './service.config'
-import SendEmailInterface from '../interface/send-email.interface';
+import SendEmailInterface from '../interfaces/send-email.interface';
 
 
 const service:Service = new Service();

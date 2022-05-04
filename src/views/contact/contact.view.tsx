@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { LoadingButton } from '../../helpers/imports/material-ui.imports'
-import FormSendEmailInterface from '../../interface/form-send-email.interface'
-import ErrorSendEmailInterface from '../../interface/error-send-email.interface'
+import FormSendEmailInterface from '../../interfaces/form-send-email.interface'
+import ErrorSendEmailInterface from '../../interfaces/error-send-email.interface'
 import { sendEmail } from '../../services/send-email.service'
-import SendEmailInterface from '../../interface/send-email.interface'
+import SendEmailInterface from '../../interfaces/send-email.interface'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
