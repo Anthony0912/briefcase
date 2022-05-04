@@ -42,6 +42,21 @@ const BriefcaseView = (): JSX.Element => {
                     </a>
                   </h5>
                 </div>
+                {project.url_project_video !== '' ? 
+                <div>
+                  <h5>
+                    <a
+                      href={project.url_repository}
+                      className="portafolio__link title-data-hover"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <i className='bx bxl-youtube'></i>
+                      <h3 className="title-data-hover">Ver video</h3>
+                    </a>
+                  </h5>
+                </div> : '' }
+                {project.url_project !== '' ? 
                 <div>
                   <h5>
                     <a
@@ -57,7 +72,7 @@ const BriefcaseView = (): JSX.Element => {
                       <h3 className="title-data-hover">Ir a {project.project}</h3>
                     </a>
                   </h5>
-                </div>
+                </div> : '' }
               </div>
             </figcaption>
           </figure>
