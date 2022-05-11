@@ -50,7 +50,7 @@ const BriefcaseView = (): JSX.Element => {
                             <i className="bx bxl-github"></i> :
                             <i className="bx bxl-gitlab"></i>}
                           <span className="name-icon">{project.repository}</span>
-                          <h3 className="title-data-hover">Ver Código Fuente</h3>
+                          <h3 className="title-data-hover">View source code</h3>
                         </a>
                       </h5>
                     </div>
@@ -64,7 +64,7 @@ const BriefcaseView = (): JSX.Element => {
                             rel="noreferrer"
                           >
                             <i className='bx bxl-youtube'></i>
-                            <h3 className="title-data-hover">Ver video</h3>
+                            <h3 className="title-data-hover">Watch video</h3>
                           </a>
                         </h5>
                       </div> : ''}
@@ -81,7 +81,7 @@ const BriefcaseView = (): JSX.Element => {
                               return <i key={index} className={icon}></i>
                             })
                             }
-                            <h3 className="title-data-hover">Ir a {project.project}</h3>
+                            <h3 className="title-data-hover">Go to {project.project}</h3>
                           </a>
                         </h5>
                       </div> : ''}
