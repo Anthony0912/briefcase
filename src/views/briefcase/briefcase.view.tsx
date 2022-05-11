@@ -58,7 +58,7 @@ const BriefcaseView = (): JSX.Element => {
                       <div>
                         <h5>
                           <a
-                            href={project.url_repository}
+                            href={project.url_project_video}
                             className="portafolio__link title-data-hover"
                             target="_blank"
                             rel="noreferrer"
