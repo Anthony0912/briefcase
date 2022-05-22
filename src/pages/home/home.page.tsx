@@ -1,10 +1,10 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import ScrollRevealComponent from '../../components/scroll-reveal/scroll-reveal.component'
-import AboutView from '../about/about.view'
-import BriefcaseView from '../briefcase/briefcase.view'
-import ContactView from '../contact/contact.view'
-import SkillsView from '../skills/skills.view'
+import AboutView from '../about/about.page'
+import BriefcaseView from '../briefcase/briefcase.page'
+import ContactView from '../contact/contact.page'
+import SkillsView from '../skills/skills.page'
 import Particles from 'react-tsparticles'
 import { loadFull } from 'tsparticles'
 import Lottie from 'lottie-react'
@@ -56,12 +56,18 @@ const Home = forwardRef((props: any, ref: any) => {
             <Particles options={optionParticle} init={particlesInit} />
           </div>
           <div className="home__data">
-            <h1 className="home__title" style={{ color: '#fff' }}>
-              Hi, <br />
-              I`am <span className="home__title-color">Anthony</span>
-              <br />
-              Web Developer
-            </h1>
+            <div className="home__title typing">
+
+              <p>
+                Hi, 
+              </p>
+              <p>
+                I`am <span className="home__title-color">Anthony </span> 
+              </p >
+              <p>
+                Web Developer.
+              </p >
+            </div>
             <Link to="/contact" className="button">
               Contact
             </Link>
@@ -116,7 +122,7 @@ const Home = forwardRef((props: any, ref: any) => {
           </div>
 
           <div className="home__img">
-            <Lottie {...defaultOptions}  />
+            <Lottie {...defaultOptions} />
           </div>
         </div>
       </ScrollRevealComponent>
@@ -126,7 +132,7 @@ const Home = forwardRef((props: any, ref: any) => {
 
 const About = forwardRef((props: any, ref: any) => {
   return (
-    <div id="about" ref={ref}>
+    <div id="about" ref={ref} className="about-config">
       <ScrollRevealComponent>
         <AboutView />
       </ScrollRevealComponent>
