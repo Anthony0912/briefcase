@@ -4,3 +4,7 @@ export { default as CircularProgress } from '@mui/material/CircularProgress';
 export { default as LoadingButton } from '@mui/lab/LoadingButton'
 export { default as Box } from '@mui/material/Box';
 export { default as Typography } from '@mui/material/Typography';
+export { default as TabList } from '@mui/lab/TabList'
+export { default as Tab } from '@mui/material/Tab';
+export { default as TabPanel } from '@mui/lab/TabPanel';
+export { default as TabContext } from '@mui/lab/TabContext';

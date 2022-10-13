@@ -10,3 +10,9 @@ export const getProjects = async (): Promise<Project[]> => {
     const data:Project[] = response?.data;
     return data
 }
+
+export const getProjectsExperience = async (): Promise<Project[]> => {
+    const response = await axios.get(`${service.api}/projects-experience`, service.config);
+    const data:Project[] = response?.data;
+    return data
+}
