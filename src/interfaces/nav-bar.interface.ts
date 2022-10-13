@@ -1,3 +1,3 @@
-export default interface navBarInterface {
+export default interface navBar {
     executeScroll(): void
 }

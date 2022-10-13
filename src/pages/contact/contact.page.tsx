@@ -1,21 +1,22 @@
 import { useState } from 'react'
 import { LoadingButton } from '../../helpers/imports/material-ui.imports'
-import FormSendEmailInterface from '../../interfaces/form-send-email.interface'
-import ErrorSendEmailInterface from '../../interfaces/error-send-email.interface'
-import { sendEmail } from '../../services/send-email.service'
-import SendEmailInterface from '../../interfaces/send-email.interface'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+
+import FormSendEmail from '../../interfaces/form-send-email.interface'
+import ErrorSendEmail from '../../interfaces/error-send-email.interface'
+import { sendEmail } from '../../services/send-email.service'
+import SendEmail from '../../interfaces/send-email.interface'
 
 const ContactView = (): JSX.Element => {
   const [isLoadBtn, setIsLoadBtn] = useState<boolean>(false)
   const regExpEmail: RegExp = RegExp(/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
-  const [form, setForm] = useState<FormSendEmailInterface>({
+  const [form, setForm] = useState<FormSendEmail>({
     name: '',
     email: '',
     message: '',
   })
-  const [errors, setErrors] = useState<ErrorSendEmailInterface>({
+  const [errors, setErrors] = useState<ErrorSendEmail>({
     name: '',
     email: '',
     message: '',
@@ -24,10 +25,10 @@ const ContactView = (): JSX.Element => {
   const onSubmit = async (event: any): Promise<void> => {
     event.preventDefault()
     setIsLoadBtn(true)
-    const errors: ErrorSendEmailInterface = formSendEmail(form)
+    const errors: ErrorSendEmail = formSendEmail(form)
     const result: boolean = validatorErrors(errors)
     if (!result) {
-      const data: SendEmailInterface = {
+      const data: SendEmail = {
         to: 'akcardona0912@gmail.com',
         from: 'akcardona0912@outlook.com',
         subject: `Mensaje enviado por ${form.name}, por el correo electrónico ${form.email} desde el formulario de contacto en el portafolio.`,
@@ -36,39 +37,39 @@ const ContactView = (): JSX.Element => {
       try {
         const response: any = await sendEmail(data)
         if (response[0]?.statusCode === 202) {
-          toast.success('El correo electrónico fue enviado con éxito.')
-          const formId: any = document.getElementById('form')
-          formId.reset()
-          setIsLoadBtn(false)
-          setErrors({ name: '', email: '', message: '' })
+          toast.success('El correo electrónico fue enviado con éxito.');
+          const formId: any = document.getElementById('form');
+          formId.reset();
+          setIsLoadBtn(false);
+          setErrors({ name: '', email: '', message: '' });
         }
       } catch (error) {
-        toast.error('El correo electrónico no pudo ser enviado, por favor intentalo más tarde.')
-        setIsLoadBtn(false)
+        toast.error('El correo electrónico no pudo ser enviado, por favor intentalo más tarde.');
+        setIsLoadBtn(false);
       }
     } else {
-      setErrors(errors)
-      setIsLoadBtn(false)
+      setErrors(errors);
+      setIsLoadBtn(false);
     }
   }
 
   const validatorErrors = (errors: any): boolean => {
-    let isError: boolean = false
+    let isError: boolean = false;
     for (const key in errors) {
       if (errors[key] !== '') {
-        isError = true
-        return isError
+        isError = true;
+        return isError;
       }
     }
     return false
   }
 
-  const handleOnChange = (prop: keyof FormSendEmailInterface) => (event: any): void => {
+  const handleOnChange = (prop: keyof FormSendEmail) => (event: any): void => {
     setForm({ ...form, [prop]: event.target.value.trim() as string })
   }
 
-  const formSendEmail = (form: FormSendEmailInterface): any => {
-    const errors: ErrorSendEmailInterface = {
+  const formSendEmail = (form: FormSendEmail): any => {
+    const errors: ErrorSendEmail = {
       name: '',
       email: '',
       message: '',

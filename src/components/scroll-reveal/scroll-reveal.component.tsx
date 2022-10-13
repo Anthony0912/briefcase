@@ -1,8 +1,8 @@
 import { FC, useEffect, useRef } from 'react'
 import ScrollReveal from 'scrollreveal'
-import ScrollRevealInterface from '../../interfaces/scroll-reveal.interface'
+import ScrollRevealRef from '../../interfaces/scroll-reveal.interface'
 
-const ScrollRevealComponent: FC<ScrollRevealInterface> = ({ children }) => {
+const ScrollRevealComponent: FC<ScrollRevealRef> = ({ children }) => {
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {

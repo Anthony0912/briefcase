@@ -1,4 +1,4 @@
-export default interface SendEmailInterface {
+export default interface SendEmail {
     to: string
     from: string
     subject: string

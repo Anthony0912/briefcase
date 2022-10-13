@@ -1,6 +1,7 @@
 import { SyntheticEvent, useEffect, useState } from 'react'
-import { getProjects, getProjectsExperience } from '../../services/project.service'
+
 import Project from '../../interfaces/project.interface'
+import { getProjects, getProjectsExperience } from '../../services/project.service'
 import { CircularProgress, TabList, Tab, TabPanel, Box, TabContext } from '../../helpers/imports/material-ui.imports';
 
 const BriefcaseView = (): JSX.Element => {

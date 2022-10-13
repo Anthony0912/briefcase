@@ -1,4 +1,4 @@
-export default interface FormSendEmailInterface {
+export default interface FormSendEmail {
     name: string
     email: string
     message: string

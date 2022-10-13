@@ -1,18 +1,21 @@
 import { forwardRef, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import ScrollRevealComponent from '../../components/scroll-reveal/scroll-reveal.component'
-import AboutView from '../about/about.page'
-import BriefcaseView from '../briefcase/briefcase.page'
-import ContactView from '../contact/contact.page'
-import SkillsView from '../skills/skills.page'
-import Particles from 'react-tsparticles'
-import { loadFull } from 'tsparticles'
 import Lottie from 'lottie-react'
+import { loadFull } from 'tsparticles'
+import Particles from 'react-tsparticles'
+
 import particlesAmongus from '../../assets/particles/particles-amongus.json'
 import particlesCircle from '../../assets/particles/particles-circle.json'
 import particlesSimple from '../../assets/particles/particles-simple.json'
 import particlesLinesEfect from '../../assets/particles/particles-lines-efects.json'
 import developerAnimation from '../../assets/lottie-files/developer-animation.json'
+
+import AboutView from '../about/about.page'
+import BriefcaseView from '../briefcase/briefcase.page'
+import ContactView from '../contact/contact.page'
+import SkillsView from '../skills/skills.page'
+
+import ScrollRevealComponent from '../../components/scroll-reveal/scroll-reveal.component'
 
 const Home = forwardRef((props: any, ref: any) => {
   const local: any = sessionStorage.getItem('particle')
