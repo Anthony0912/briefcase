@@ -4,7 +4,7 @@ export const environment = {
     APP_ENVIRONMENT: "production",
 
     //## PRODUCTION
-    PROD_URL_API: "https://brefcase-api.herokuapp.com/api",
+    PROD_URL_API: "https://briefcase-api.vercel.app/api",
 
 
     //## TEST

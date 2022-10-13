@@ -4,19 +4,22 @@ import Project from '../../interfaces/project.interface'
 import { CircularProgress } from '../../helpers/imports/material-ui.imports';
 
 const BriefcaseView = (): JSX.Element => {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const abortController: AbortController = new AbortController()
+    const abortController: AbortController = new AbortController();
     const fechData = async (): Promise<void> => {
       const response: Project[] = await getProjects()
-      setProjects(response)
-      setIsLoading(false)
+      setProjects(response);
+      setIsLoading(false);
     }
 
-    fechData().catch(console.error)
-    return () => abortController.abort()
+    fechData().catch(() => {
+      setProjects([]);
+      setIsLoading(false);
+    })
+    return () => abortController.abort();
 
   }, [])
 
@@ -28,9 +31,9 @@ const BriefcaseView = (): JSX.Element => {
           <CircularProgress />
         </div>
         : projects.length === 0 && !isLoading ?
-        <div className='content-empty-portafolio'>
-          <h2>It has not been possible to obtain the projects, please try again later.</h2>
-        </div>
+          <div className='content-empty-portafolio'>
+            <h2>It has not been possible to obtain the projects, please try again later.</h2>
+          </div>
           :
           <div className="work__container bd-grid">
             {projects.map((project: Project, index: number) => {
