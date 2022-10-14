@@ -1,12 +1,19 @@
-import axios from 'axios'
-import Service from './service.config'
+import HttpClient from '../helpers/config-services/http-client.config';
+import ResponseSendGrid from '../interfaces/response-send-grid.interface';
+
 import SendEmailInterface from '../interfaces/send-email.interface';
 
 
-const service:Service = new Service();
+export default class SendEmailService {
+    private _httpClient: HttpClient
 
-export const sendEmail = async (form:SendEmailInterface): Promise<Array<any>> => {
-    const response = await axios.post(`${service.api}/send-email`, form, service.config);
-    const data = response?.data;
-    return data
+    constructor(httpClient: HttpClient) {
+        this._httpClient = httpClient;
+    }
+
+    public async sendEmail(form: SendEmailInterface): Promise<ResponseSendGrid> {
+        const response = await this._httpClient.post('send-email', form);        
+        const data: ResponseSendGrid = response.data[0];        
+        return data
+    }
 }

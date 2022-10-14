@@ -1,18 +1,25 @@
-import axios from 'axios'
-import Service from './service.config'
+import HttpClient from '../helpers/config-services/http-client.config';
+
 import Project from '../interfaces/project.interface';
 
+export default class ProjectService {
+    
+    private _httpClient: HttpClient
+    
+    constructor(httpClient: HttpClient) { 
+        this._httpClient = httpClient;
+    }
 
-const service:Service = new Service();
+    public async getProjects(): Promise<Project[]> {
+        const response = await this._httpClient.get('projects');
+        const data: Project[] = response?.data;
+        return data
+    }
 
-export const getProjects = async (): Promise<Project[]> => {
-    const response = await axios.get(`${service.api}/projects`, service.config);
-    const data:Project[] = response?.data;
-    return data
-}
+    public async getProjectsExperience(): Promise<Project[]> {
+        const response = await this._httpClient.get('projects-experience');
+        const data: Project[] = response?.data;
+        return data
+    }
 
-export const getProjectsExperience = async (): Promise<Project[]> => {
-    const response = await axios.get(`${service.api}/projects-experience`, service.config);
-    const data:Project[] = response?.data;
-    return data
 }

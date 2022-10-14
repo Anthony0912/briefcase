@@ -1,20 +1,10 @@
-import { environment } from "../environments/environment";
+import { environment } from "../../environments/environment";
 
 export default class Service {
 
   private stateEnvironment: string[] = ['production', 'development', 'testing'];
-
+  
   public api: string = this.getStateEnvironment();
-  public config: any
-
-  constructor() {
-    this.config = {
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: localStorage.getItem('authorization')! ?? '',
-      },
-    }
-  }
 
   private getStateEnvironment(): string {
     switch (environment.APP_ENVIRONMENT) {

@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import { LoadingButton } from '../../helpers/imports/material-ui.imports'
+import HttpClient from '../../helpers/config-services/http-client.config'
+import SendEmailService from '../../services/send-email.service'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 import FormSendEmail from '../../interfaces/form-send-email.interface'
 import ErrorSendEmail from '../../interfaces/error-send-email.interface'
-import { sendEmail } from '../../services/send-email.service'
 import SendEmail from '../../interfaces/send-email.interface'
+import ResponseSendGrid from '../../interfaces/response-send-grid.interface'
 
 const ContactView = (): JSX.Element => {
   const [isLoadBtn, setIsLoadBtn] = useState<boolean>(false)
@@ -15,33 +17,40 @@ const ContactView = (): JSX.Element => {
     name: '',
     email: '',
     message: '',
-  })
+  });
   const [errors, setErrors] = useState<ErrorSendEmail>({
     name: '',
     email: '',
     message: '',
-  })
+  });
 
-  const onSubmit = async (event: any): Promise<void> => {
-    event.preventDefault()
+  const httpClient = new HttpClient();
+  const sendEmailService = new SendEmailService(httpClient);
+  
+  const onSubmit = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
+    event.preventDefault();
     setIsLoadBtn(true)
     const errors: ErrorSendEmail = formSendEmail(form)
     const result: boolean = validatorErrors(errors)
     if (!result) {
       const data: SendEmail = {
-        to: 'akcardona0912@gmail.com',
+        to: form.email,
         from: 'akcardona0912@outlook.com',
         subject: `Mensaje enviado por ${form.name}, por el correo electrónico ${form.email} desde el formulario de contacto en el portafolio.`,
         text: form.message,
       }
       try {
-        const response: any = await sendEmail(data)
-        if (response[0]?.statusCode === 202) {
+        const response: ResponseSendGrid = await sendEmailService.sendEmail(data);
+        const statusValid: number[] = [202, 200];
+        if (statusValid.includes(response?.statusCode)) {
           toast.success('El correo electrónico fue enviado con éxito.');
           const formId: any = document.getElementById('form');
           formId.reset();
           setIsLoadBtn(false);
           setErrors({ name: '', email: '', message: '' });
+        } else {
+          toast.error('El correo electrónico no pudo ser enviado, por favor intentalo más tarde.');
+          setIsLoadBtn(false);
         }
       } catch (error) {
         toast.error('El correo electrónico no pudo ser enviado, por favor intentalo más tarde.');

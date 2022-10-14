@@ -1,32 +1,38 @@
 import { SyntheticEvent, useEffect, useState } from 'react'
+import ProjectService from '../../services/project.service';
+import HttpClient from '../../helpers/config-services/http-client.config';
 
-import Project from '../../interfaces/project.interface'
-import { getProjects, getProjectsExperience } from '../../services/project.service'
+import Project from '../../interfaces/project.interface';
 import { CircularProgress, TabList, Tab, TabPanel, Box, TabContext } from '../../helpers/imports/material-ui.imports';
 
 const BriefcaseView = (): JSX.Element => {
+
+  
   const [projects, setProjects] = useState<Project[]>([]);
   const [projectsExperience, setProjectsExperience] = useState<Project[]>([]);
   const [isLoadingProjects, setIsLoadingProjects] = useState<boolean>(true);
-  const [isLoadingProjectsExp, setIsLoadingProjectsExp] = useState<boolean>(true);
+  const [isLoadingProjectsExperience, setIsLoadingProjectsExperience] = useState<boolean>(true);
   const [value, setValue] = useState<string>('1');
-
+  
+  
   useEffect(() => {
     const abortController: AbortController = new AbortController();
     const fechData = async (): Promise<void> => {
-      const responseProjects: Project[] = await getProjects()
-      const responseProjectsExp: Project[] = await getProjectsExperience()
+      const httpClient = new HttpClient();
+      const projectService = new ProjectService(httpClient);
+      const responseProjects: Project[] = await projectService.getProjects()
+      const responseProjectsExperience: Project[] = await projectService.getProjectsExperience()
       setProjects(responseProjects);
       setIsLoadingProjects(false);
-      setProjectsExperience(responseProjectsExp);
-      setIsLoadingProjectsExp(false);
+      setProjectsExperience(responseProjectsExperience);
+      setIsLoadingProjectsExperience(false);
     }
 
     fechData().catch(() => {
       setProjects([]);
       setIsLoadingProjects(false);
       setProjectsExperience([]);
-      setIsLoadingProjectsExp(false);
+      setIsLoadingProjectsExperience(false);
     })
     return () => abortController.abort();
 
@@ -50,11 +56,11 @@ const BriefcaseView = (): JSX.Element => {
             </TabList >
           </Box>
           <TabPanel value="1">
-            {isLoadingProjectsExp ?
+            {isLoadingProjectsExperience ?
               <div className='content-empty-portafolio'>
                 <CircularProgress />
               </div>
-              : projectsExperience.length === 0 && !isLoadingProjectsExp ?
+              : projectsExperience.length === 0 && !isLoadingProjectsExperience ?
                 <div className='content-empty-portafolio'>
                   <h2>It has not been possible to obtain the projects, please try again later.</h2>
                 </div>
