@@ -4,7 +4,7 @@ export const environment = {
     APP_ENVIRONMENT: "production",
 
     //## PRODUCTION
-    PROD_URL_API: "https://briefcase-api.vercel.app/api",
+    PROD_URL_API: "https://briefcase-682j.onrender.com/api",
 
 
     //## TEST
