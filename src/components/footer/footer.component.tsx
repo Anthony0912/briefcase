@@ -51,7 +51,7 @@ const FooterComponent = (): JSX.Element => {
           <i className="bx bxl-twitter"></i>
         </a>
       </div>
-      <p>&#169; 2021 copyright all right reserved</p>
+      <p>&#169; {new Date().getFullYear()} copyright all right reserved</p>
     </footer>
   )
 }
