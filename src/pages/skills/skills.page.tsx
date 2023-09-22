@@ -67,6 +67,16 @@ const SkillsView = (): JSX.Element => {
         </div>
         <div className="skills__data">
           <div className="skills__names">
+            <i className="fas fa-code skills__icon"></i>
+            <span className="skills__name">.NET</span>
+          </div>
+          <div className="skills__bar skills__net"></div>
+          <div>
+            <span className="skills__percentage">50%</span>
+          </div>
+        </div>
+        <div className="skills__data">
+          <div className="skills__names">
             <i className="bx bxl-react skills__icon"></i>
             <span className="skills__name">REACT JS</span>
           </div>

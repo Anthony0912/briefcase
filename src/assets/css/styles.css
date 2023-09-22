@@ -134,19 +134,20 @@ img {
 @keyframes scale-up {
   20% {
     background-color: #fff;
-    transform:scaleY(1.5)
+    transform: scaleY(1.5)
   }
 
   40% {
-    transform:scaleY(1)
+    transform: scaleY(1)
   }
 }
 
 
 
 .about-config {
-  margin-top:30px
+  margin-top: 30px
 }
+
 .typing p {
   border-right: 3px solid;
   white-space: nowrap;
@@ -187,9 +188,11 @@ img {
   0% {
     width: 0;
   }
+
   99.9% {
     border-right: 3px solid;
   }
+
   100% {
     border: none;
   }
@@ -199,9 +202,11 @@ img {
   0% {
     width: 0;
   }
+
   99.9% {
     border-right: 3px solid;
   }
+
   100% {
     border: none;
   }
@@ -211,12 +216,15 @@ img {
   0% {
     width: 0;
   }
+
   1% {
     opacity: 1;
   }
+
   99.9% {
     border-right: 3px solid;
   }
+
   100% {
     opacity: 1;
     border: none;
@@ -227,12 +235,15 @@ img {
   0% {
     width: 0;
   }
+
   1% {
     opacity: 1;
   }
+
   99.9% {
     border-right: 3px solid;
   }
+
   100% {
     opacity: 1;
     border: none;
@@ -243,9 +254,11 @@ img {
   0% {
     width: 0;
   }
+
   1% {
     opacity: 1;
   }
+
   100% {
     opacity: 1;
   }
@@ -255,9 +268,11 @@ img {
   0% {
     width: 0;
   }
+
   1% {
     opacity: 1;
   }
+
   100% {
     opacity: 1;
   }
@@ -587,6 +602,10 @@ img {
 
 .skills__expresjs {
   width: 88%;
+}
+
+.skills__net {
+  width: 60%;
 }
 
 .skills__java {
