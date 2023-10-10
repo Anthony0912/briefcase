@@ -23,8 +23,8 @@ export default class HttpClient {
         return response;
     }
 
-    public async post<T>(url: string, data: T) {
-        const response = await axios.post(`${this._service.api}/${url}`, data, this.header);
+    public async post<T, D>(url: string, data: T) {
+        const response = await axios.post<D>(`${this._service.api}/${url}`, data, this.header);
         return response;
     }
 }

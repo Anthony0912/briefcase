@@ -1,7 +1,7 @@
 import HttpClient from '../helpers/config-services/http-client.config';
-import ResponseSendGrid from '../interfaces/response-send-grid.interface';
 
 import SendEmailInterface from '../interfaces/send-email.interface';
+import Response from '../interfaces/response.interface'
 
 
 export default class SendEmailService {
@@ -11,9 +11,8 @@ export default class SendEmailService {
         this._httpClient = httpClient;
     }
 
-    public async sendEmail(form: SendEmailInterface): Promise<ResponseSendGrid> {
-        const response = await this._httpClient.post('send-email', form);        
-        const data: ResponseSendGrid = response.data[0];        
-        return data
+    public async sendEmail(form: SendEmailInterface) {
+        const response = await this._httpClient.post<SendEmailInterface, Response<{ id: string }>>('send-email', form);
+        return response.data;
     }
 }

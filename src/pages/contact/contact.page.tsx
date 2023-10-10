@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css'
 import FormSendEmail from '../../interfaces/form-send-email.interface'
 import ErrorSendEmail from '../../interfaces/error-send-email.interface'
 import SendEmail from '../../interfaces/send-email.interface'
-import ResponseSendGrid from '../../interfaces/response-send-grid.interface'
 
 const ContactView = (): JSX.Element => {
   const [isLoadBtn, setIsLoadBtn] = useState<boolean>(false)
@@ -34,15 +33,15 @@ const ContactView = (): JSX.Element => {
     const result: boolean = validatorErrors(errors)
     if (!result) {
       const data: SendEmail = {
-        to: form.email,
-        from: 'akcardona0912@outlook.com',
+        to: 'akcardona0912@outlook.com',
+        from: 'onboarding@resend.dev',
         subject: `Mensaje enviado por ${form.name}, por el correo electrónico ${form.email} desde el formulario de contacto en el portafolio.`,
         text: form.message,
       }
       try {
-        const response: ResponseSendGrid = await sendEmailService.sendEmail(data);
-        const statusValid: number[] = [202, 200];
-        if (statusValid.includes(response?.statusCode)) {
+        const response = await sendEmailService.sendEmail(data);
+      
+        if (response?.statusCode === 200) {
           toast.success('El correo electrónico fue enviado con éxito.');
           const formId: any = document.getElementById('form');
           formId.reset();
